@@ -44,6 +44,8 @@ makeinstall_target() {
       find_file_path bootloader/${PKG_SUBDEVICE}_boot.ini && cp -av ${FOUND_PATH} $INSTALL/usr/share/bootloader
       if [ $PKG_SUBDEVICE = "Odroid_C2" ]; then
         PKG_UBOOTBIN=$(get_build_dir u-boot-${PKG_SUBDEVICE})/u-boot.bin
+      elif [ $PKG_SUBDEVICE = "Odroid_N2" ]; then
+        PKG_UBOOTBIN=$(get_build_dir u-boot-${PKG_SUBDEVICE})/sd_fuse/u-boot.bin.sd.bin
       else
         PKG_UBOOTBIN=$(get_build_dir u-boot-${PKG_SUBDEVICE})/fip/u-boot.bin.sd.bin
       fi

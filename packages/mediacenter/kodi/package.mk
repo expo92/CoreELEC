@@ -24,6 +24,12 @@ case $KODI_VENDOR in
     PKG_URL="https://github.com/kwiboo/xbmc/archive/$PKG_VERSION.tar.gz"
     PKG_SOURCE_NAME="kodi-$KODI_VENDOR-$PKG_VERSION.tar.gz"
     ;;
+  amlogic)
+    PKG_VERSION="a2f032b6d3d6766fbf8522c6e56a0bb6bda912fd"
+    PKG_SHA256="8b89533af437f201523dc72bc3ccbadad5a09ad52336606c242bca348c0b4ff3"
+    PKG_URL="https://github.com/CoreELEC/xbmc/archive/$PKG_VERSION.tar.gz"
+    PKG_SOURCE_NAME="kodi-$PKG_VERSION.tar.gz"
+    ;;
   *)
     PKG_VERSION="18.1-Leia"
     PKG_SHA256="bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166"

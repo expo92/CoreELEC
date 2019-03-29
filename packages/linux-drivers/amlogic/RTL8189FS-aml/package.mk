@@ -2,12 +2,12 @@
 # Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="RTL8189FS-aml"
-PKG_VERSION="538ba58"
-PKG_SHA256="3dc7602481096b8890d48915e16bf0eb1554ca1b7a3dfec6450486468aadb826"
+PKG_VERSION="8fa1759c779a8b2dec8957b711b9c0a50eb24d4c"
+PKG_SHA256="214b1f8d370b25a4ee8f0cb121f68eac93d4d6b2af53a9d4da707a23b2cc03e1"
 PKG_ARCH="arm aarch64"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/khadas/android_hardware_wifi_realtek_drivers_8189ftv"
-PKG_URL="https://github.com/khadas/android_hardware_wifi_realtek_drivers_8189ftv/archive/$PKG_VERSION.tar.gz"
+PKG_SITE="https://github.com/CGarces/rtl8189FS"
+PKG_URL="https://github.com/CGarces/rtl8189FS/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain linux"
 PKG_NEED_UNPACK="$LINUX_DEPENDS"
 PKG_LONGDESC="Realtek RTL8189FS Linux driver"

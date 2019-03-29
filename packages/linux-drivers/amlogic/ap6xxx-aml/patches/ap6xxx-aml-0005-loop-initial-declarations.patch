@@ -1,0 +1,14 @@
+diff -Naur ap6xxx-aml-99b3459.orig/bcmdhd.1.363.59.144.x.cn/dhd_linux.c ap6xxx-aml-99b3459/bcmdhd.1.363.59.144.x.cn/dhd_linux.c
+--- ap6xxx-aml-99b3459.orig/bcmdhd.1.363.59.144.x.cn/dhd_linux.c	2019-03-22 09:08:00.280136628 +0100
++++ ap6xxx-aml-99b3459/bcmdhd.1.363.59.144.x.cn/dhd_linux.c	2019-03-22 09:08:59.700324961 +0100
+@@ -6126,8 +6126,9 @@
+ #endif /* BCM_FD_AGGR */
+ 	int ifidx;
+ 	int32 ret = 0;
++	int retry;
+ 
+-	for (int retry = 0; ++retry; ) {
++	for (retry = 0; ++retry; ) {
+ 		if (!dhd_download_fw_on_driverload && !dhd_driver_init_done) {
+ 			DHD_ERROR(("%s: WLAN driver is not initialized\n", __FUNCTION__));
+ 			if (retry > 1) {

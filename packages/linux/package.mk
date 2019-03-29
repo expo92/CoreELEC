@@ -32,6 +32,15 @@ case "$LINUX" in
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET aml-dtbtools:host"
     PKG_BUILD_PERF="no"
     ;;
+  amlogic-4.9)
+    PKG_VERSION="98d7b0058339ba6c4949808cc7bfa5e372b05486"
+    PKG_SHA256="f23d224d01463b9b994089735c1127dcb8856e3138d359718289f39736ac4822"
+    PKG_URL="https://github.com/CoreELEC/linux-amlogic/archive/$PKG_VERSION.tar.gz"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
+    PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET aml-dtbtools:host"
+    PKG_BUILD_PERF="no"
+    PKG_GIT_BRANCH="amlogic-4.9"
+    ;;
   rockchip-4.4)
     PKG_VERSION="aa8bacf821e5c8ae6dd8cae8d64011c741659945"
     PKG_SHA256="a2760fe89a15aa7be142fd25fb08ebd357c5d855c41f1612cf47c6e89de39bb3"
@@ -228,9 +237,10 @@ make_target() {
 
 makeinstall_target() {
   if [ "$BOOTLOADER" = "u-boot" ]; then
-    mkdir -p $INSTALL/usr/share/bootloader
+    mkdir -p $INSTALL/usr/share/bootloader/device_trees
     if [ -d arch/$TARGET_KERNEL_ARCH/boot/dts/amlogic ]; then
       cp arch/$TARGET_KERNEL_ARCH/boot/*dtb.img $INSTALL/usr/share/bootloader/ 2>/dev/null || :
+      cp arch/$TARGET_KERNEL_ARCH/boot/dts/amlogic/*.dtb $INSTALL/usr/share/bootloader/device_trees 2>/dev/null || :
     fi
   elif [ "$BOOTLOADER" = "bcm2835-bootloader" ]; then
     mkdir -p $INSTALL/usr/share/bootloader/overlays
