@@ -1,5 +1,0 @@
-#!/bin/sh
-
-startfe.sh
-
-
