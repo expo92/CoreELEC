@@ -10,6 +10,7 @@ case "$1" in
 	;;
 esac
 
+BPP=32
 
 case "$MODE" in
 "480p60hz")
