@@ -1,10 +1,10 @@
 #!/bin/sh
 
-hdmimode=`cat /sys/class/display/mode`;
-
 if  pgrep mpg123 >/dev/null ; then
 /storage/.emulationstation/scripts/bgm.sh 
 fi
+
+hdmimode=`cat /sys/class/display/mode`;
 
 # Set framebuffer geometry to match the resolution, splash should change according to the resolution. 
 case $hdmimode in
@@ -13,6 +13,11 @@ case $hdmimode in
   720p*)           X=1280 Y=720  SPLASH="/storage/.config/splash/loading-game.png" ;;
   *)               X=1920 Y=1080 SPLASH="/storage/.config/splash/loading-game.png" ;;
 esac
+
+# Splash screen, not sure if this is the best way to do it, but it works so far, but not as good as I want it too with PPSSPPSDL and advmame :(
+(
+  fbi $SPLASH -noverbose > /dev/null 2>&1
+)&
 
 # Set the variables
 CFG="/storage/.emulationstation/es_settings.cfg"
@@ -46,12 +51,6 @@ case $1 in
         ;;
 esac
 
-
-# Splash screen, not sure if this is the best way to do it, but it works so far, but not as good as I want it too with PPSSPPSDL and advmame :(
-(
-  fbi $SPLASH -noverbose > /dev/null 2>&1
-)&
-
 # Write the command to the log file.
 echo "1st parameter: $1" >> $SX05RELOG 
 echo "2nd Parameter: $2" >> $SX05RELOG 
@@ -82,3 +81,8 @@ fi
 
 # Return to default mode
 /usr/bin/setres.sh
+
+# Splash screen, not sure if this is the best way to do it, but it works so far, but not as good as I want it too with PPSSPPSDL and advmame :(
+(
+  fbi $SPLASH -noverbose > /dev/null 2>&1
+)&
