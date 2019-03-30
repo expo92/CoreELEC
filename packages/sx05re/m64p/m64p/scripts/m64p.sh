@@ -17,13 +17,13 @@ fi
 if [ `echo ${M64P_GAME_NAME} | grep -i  '.n64\|.v64\|.z64\|.bin\|.u1\|.ndd\|.7z\|.zip' | wc -l` -eq 1 ]; then
 
   # Freeze Kodi / stop audio
-  kodifreeze.sh freeze
+#  kodifreeze.sh freeze
 
   # Change refresh rate to 60Hz
-  set_refresh_rate_60
+#  set_refresh_rate_60
 
   # Set audio backend to PulseAudio or ALSA
-  set_SDL_audiodriver
+#  set_SDL_audiodriver
 
   # Which file should M64P load?
   echo "Trying to boot this game:" "${M64P_GAME_NAME}" > ${M64P_LOG}
@@ -44,7 +44,7 @@ if [ `echo ${M64P_GAME_NAME} | grep -i  '.n64\|.v64\|.z64\|.bin\|.u1\|.ndd\|.7z\
     unzip -qq -o "$1" *.n64 *.v64 *.z64 *.bin *.u1 *.ndd -d "${M64P_TMP_DIR}" 2>/dev/null
 
     # start m64p
-    mupen64plus-cli "${M64P_TMP_DIR}"/* >> ${M64P_LOG} 2>&1
+    SDL_AUDIODRIVER=alsa mupen64plus --emumode 2 --resolution 1920x1080  --fullscreen --gfx /usr/lib/mupen64plus/mupen64plus-video-gliden64.so "${M64P_TMP_DIR}"/* >> ${M64P_LOG} 2>&1
     rm -rf "${M64P_TMP_DIR}"
 
   # Check if we are loading a 7z file
@@ -57,17 +57,17 @@ if [ `echo ${M64P_GAME_NAME} | grep -i  '.n64\|.v64\|.z64\|.bin\|.u1\|.ndd\|.7z\
 	7za x "$1" -o"${M64P_TMP_DIR}" *.n64 *.v64 *.z64 *.bin *.u1 *.ndd -r > /dev/null
 
     # start m64p
-    mupen64plus-cli "${M64P_TMP_DIR}"/* >> ${M64P_LOG} 2>&1
+    SDL_AUDIODRIVER=alsa mupen64plus --emumode 2 --resolution 1920x1080  --fullscreen --gfx /usr/lib/mupen64plus/mupen64plus-video-gliden64.so "${M64P_TMP_DIR}"/* >> ${M64P_LOG} 2>&1
     rm -rf "${M64P_TMP_DIR}"
   else
     # non-compressed file detcted
     echo "Loading a regular file..." >> ${M64P_LOG}
 
-    mupen64plus-cli "$@" >> ${M64P_LOG} 2>&1  
+    SDL_AUDIODRIVER=alsa mupen64plus --emumode 2 --resolution 1920x1080  --fullscreen --gfx /usr/lib/mupen64plus/mupen64plus-video-gliden64.so "$@" >> ${M64P_LOG} 2>&1  
   fi
 
   # Switch back to Frontends or unfreeze Kodi & start audio
-  pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
+  # pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
 else
    echo "File extension of" "${M64P_GAME_NAME}" "is not supported" >> ${M64P_LOG}
    echo "Try a rom with with one of these file extensions .n64 .v64 .z64 .bin .u1 .ndd .7z .zip" >> ${M64P_LOG}
