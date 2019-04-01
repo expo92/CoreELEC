@@ -150,7 +150,7 @@
   JOYSTICK_SUPPORT="yes"
 
 # build and install CEC adapter support (yes / no)
-  CEC_SUPPORT="yes"
+  CEC_SUPPORT="no"
 
 # build and install CEC framework support (yes / no)
   CEC_FRAMEWORK_SUPPORT="no"
