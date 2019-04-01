@@ -16,7 +16,7 @@ esac
 
 # Splash screen, not sure if this is the best way to do it, but it works so far, but not as good as I want it too with PPSSPPSDL and advmame :(
 (
-  fbi $SPLASH -noverbose > /dev/null 2>&1
+  mpv $SPLASH > /dev/null 2>&1
 )&
 
 # Set the variables
@@ -82,7 +82,6 @@ fi
 # Return to default mode
 /usr/bin/setres.sh
 
-# Splash screen, not sure if this is the best way to do it, but it works so far, but not as good as I want it too with PPSSPPSDL and advmame :(
 (
-  fbi $SPLASH -noverbose > /dev/null 2>&1
+  mpv $SPLASH > /dev/null 2>&1
 )&
