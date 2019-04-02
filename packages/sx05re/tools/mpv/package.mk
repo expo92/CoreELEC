@@ -16,7 +16,7 @@ configure_target() {
   #./bootstrap.py 
   # the bootstrap was failing for some reason. 
   cp $PKG_DIR/waf/* $PKG_BUILD  
-  ./waf configure --enable-sdl2 --disable-pulse --disable-libbluray
+  ./waf configure --enable-sdl2 --disable-pulse --disable-libbluray --disable-drm
 }
 
 make_target() {
