@@ -14,7 +14,7 @@
 
 # Set Global variables
 ROOTDIR="/storage"
-CONFIGDIR="$ROOTDIR/.config/configs"
+CONFIGDIR="$ROOTDIR/.config/retroarch/configs"
 ROMDIR="$ROOTDIR/roms"
 LOG="/storage/sx05re.log"
 SYSTEM="LIBRETRO REICAST ADVMAME PSP"
